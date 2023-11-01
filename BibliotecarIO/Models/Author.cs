@@ -11,5 +11,10 @@ namespace BibliotecarIO.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public ICollection<Book> Books { get; set; }
+
+        public Author()
+        {
+            
+        }
     }
 }

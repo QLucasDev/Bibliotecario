@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace BibliotecarIO.Persistence
 {
-    public class PublisherConfig : IEntityTypeConfiguration<Publisher>
+    public class PublisherConfiguration : IEntityTypeConfiguration<Publisher>
     {
         public void Configure(EntityTypeBuilder<Publisher> builder)
         {

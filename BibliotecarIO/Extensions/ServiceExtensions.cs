@@ -2,11 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BibliotecarIO.DataBase;
+using Microsoft.EntityFrameworkCore;
 
 namespace BibliotecarIO.Extensions
 {
     public static class ServiceExtensions
     {
+        //Habilita a comunicação entre servidores diferentes.
         public static void ConfigureCors(this IServiceCollection services)
         {
             services.AddCors(opt =>
@@ -23,6 +26,12 @@ namespace BibliotecarIO.Extensions
             {
                 //As configurações padrões já são suficientes para o funcionamento correto...
             });
+        }
+
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration config)
+        {
+            var connectionString = config["ConnectionStrings:MyContext"];
+            services.AddDbContext<BibliotecarioContext>(c => c.UseSqlServer(connectionString));
         }
     }
 }
