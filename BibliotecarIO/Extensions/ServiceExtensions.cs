@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BibliotecarIO.DataBase;
+using BibliotecarIO.Models.Intefaces;
+using BibliotecarIO.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace BibliotecarIO.Extensions
@@ -32,6 +34,11 @@ namespace BibliotecarIO.Extensions
         {
             var connectionString = config["ConnectionStrings:MyContext"];
             services.AddDbContext<BibliotecarioContext>(c => c.UseSqlServer(connectionString));
+        }
+
+        public static void ConfigureRepositoryWrapper(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryWrapper, RepositoryWrapper>();
         }
     }
 }

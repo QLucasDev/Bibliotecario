@@ -10,6 +10,7 @@ namespace BibliotecarIO.Persistence
 {
     public class BookConfiguration : IEntityTypeConfiguration<Book>
     {
+        //Configurações de ORM para a entidade Book
         public void Configure(EntityTypeBuilder<Book> builder)
         {
             builder.HasKey(b => b.Id);
